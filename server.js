@@ -23,8 +23,9 @@ app.use(cookieParser());
 const limiter = rateLimit({ windowMs: 60 * 1000, max: 100 });
 app.use(limiter);
 
+// ✅ CORS configured for deployed frontend only
 app.use(cors({
-  origin: process.env.FRONTEND_ORIGIN,
+  origin: 'https://to-do-front-beryl.vercel.app',
   credentials: true,
 }));
 
