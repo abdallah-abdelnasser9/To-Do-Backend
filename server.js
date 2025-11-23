@@ -12,7 +12,7 @@ const taskRoutes = require('./routes/tasks');
 const errorHandler = require('./middleware/errorHandler');
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT;
 connectDB();
 
 app.use(helmet());
