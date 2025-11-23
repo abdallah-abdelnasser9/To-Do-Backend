@@ -37,11 +37,13 @@ exports.login = async (req, res) => {
       expiresIn: process.env.JWT_EXPIRES_IN || '7d',
     });
 
-    res.cookie('token', token, {
-      httpOnly: true,
-      secure: process.env.COOKIE_SECURE === 'true',
-      sameSite: 'lax',
-    });
+     res.cookie('token', token, {
+         httpOnly: true,
+         secure: true,    
+         sameSite: 'none',  
+         maxAge: 7*24*60*60*1000 
+});
+
 
     res.status(200).json({ message: 'Login successful', userId: user._id });
   } catch (err) {
